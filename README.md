@@ -63,7 +63,7 @@ mysql -u root -p -e "GRANT ALL PRIVILEGES ON dndwikidb.* TO 'dndwiki'
 ## Mediawiki setup
 
 Connect to `localhost:8080`, setup mediawiki, download `LocalSettings.php`
-from the container and place it under `./data/mediawiki directory`.
+from the container and place it under `./data/mediawiki directory`.  
 **NB:** use container IP address to connect to MariaDB instance.
 
 Edit `LocalSettings.php` settings as follows:
@@ -88,3 +88,28 @@ $wgCookieSecure = false;
 Then uncomment the relative mount directive along with the autostart
 directives in `docker-compose.yml` and restart the containers.
 
+## Automatizion
+
+To schedule a backup run
+
+```
+crontab -e
+```
+
+and enter the following line
+
+```
+0 16 * * * /home/pi/Docker/dndwiki/scripts/backup-database
+```
+
+In order to automatically renew SSL certificates run instead
+
+```
+sudo crontab -e
+```
+
+and enter the following line
+
+```
+0 17 * * * /home/pi/Docker/dndwiki/scripts/renew-certs
+```
