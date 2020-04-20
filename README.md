@@ -43,7 +43,9 @@ be made automatically available to the `docker-compose.yml` file.
 
 ```()
 MYSQL_ROOT_PASSWORD=XXX
-MYSQL_PASSWORD=XXX
+WIKI_USER=dndwiki
+WIKI_PASSWORD=XXXX
+WIKI_DB=dndwikidb
 ```
 
 ## MariaDB setup
@@ -81,8 +83,11 @@ $wgLogo = "$wgScriptPath/images/tower_lion.png";
 
 [...]
 
-# Include this line
-$wgCookieSecure = false;
+# Edit the cache type
+$wgMainCacheType = CACHE_ANYTHING;
+
+# Optionally enable user to register themselves in a private wiki
+$wgWhitelistRead = array('Special:RequestAccount', 'Main Page', 'Special:CreateAccount');
 ```
 
 Then uncomment the relative mount directive along with the autostart

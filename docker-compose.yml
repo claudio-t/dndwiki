@@ -3,7 +3,7 @@ services:
   mediawiki:
     image: mediawiki
     container_name: dnd_mediawiki
-#    restart: always
+    restart: always
     ports:
       - 8080:80
     links:
@@ -15,7 +15,7 @@ services:
   database:
     container_name: wikidb
     image: linuxserver/mariadb
-#    restart: always
+    restart: always
     
     environment:
       MYSQL_DATABASE: ${WIKI_DB}
