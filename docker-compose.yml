@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mediawiki:
+    image: mediawiki
+    container_name: dnd_mediawiki
+#    restart: always
+    ports:
+      - 8080:80
+    links:
+      - database
+    volumes:
+      - ./data/images:/var/www/html/images
+      - ./data/mediawiki/LocalSettings.php:/var/www/html/LocalSettings.php
+
+  database:
+    container_name: wikidb
+    image: linuxserver/mariadb
+#    restart: always
+    
+    environment:
+      MYSQL_DATABASE: ${WIKI_DB}
+      MYSQL_USER: ${WIKI_USER}
+      MYSQL_PASSWORD: ${WIKI_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data/mysql:/var/lib/mysql
+      
+    ports:
+      - 3306:3306
