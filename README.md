@@ -78,6 +78,11 @@ $wgServer = "https://engwhy.duckdns.org";
 
 [...]
 
+# Change the DB server to DB hostname (= Docker container name)
+$wgDBserver = "wikidb";
+
+[...]
+
 # Set logo (this assumes that the file exists under images folder)
 $wgLogo = "$wgScriptPath/images/tower_lion.png";
 
