@@ -109,7 +109,7 @@ crontab -e
 and enter the following line
 
 ```
-0 16 * * * /home/pi/Docker/dndwiki/scripts/backup-database
+0 16 * * * /home/pi/Docker/dndwiki/scripts/backup-database >> /home/pi/Docker/dndwiki/log/backup-database.log 2>&1
 ```
 
 In order to automatically renew SSL certificates run instead
@@ -121,5 +121,5 @@ sudo crontab -e
 and enter the following line
 
 ```
-0 17 * * * /home/pi/Docker/dndwiki/scripts/renew-certs
+0 17 * * * /home/pi/Docker/dndwiki/scripts/renew-certs >> /home/pi/Docker/dndwiki/log/renew-certs.log 2>&1
 ```
