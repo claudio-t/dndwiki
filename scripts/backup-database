@@ -16,4 +16,4 @@ $MYSQLDUMP -h 127.0.0.1 -u root -p"$MYSQL_ROOT_PASSWORD" --databases $WIKI_DB | 
 BODY=$FILE
 CHECKSUM=$(sha256sum $BODY | awk '{print $1}')
 DESCRIPTION="DnD SQL backup $NOW"
-aws glacier upload-archive --vault-name $VAULT_NAME --account-id $ACCOUNT_ID --archive-description $DESCRIPTION --body $BODY --checksum $CHECKSUM
+/home/pi/.local/bin/aws glacier upload-archive --vault-name $VAULT_NAME --account-id $ACCOUNT_ID --archive-description $DESCRIPTION --body $BODY --checksum $CHECKSUM

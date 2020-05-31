@@ -98,7 +98,7 @@ $wgWhitelistRead = array('Special:RequestAccount', 'Main Page', 'Special:CreateA
 Then uncomment the relative mount directive along with the autostart
 directives in `docker-compose.yml` and restart the containers.
 
-## Automatizion
+## Automation
 
 To schedule a backup run
 
